@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Kod Analiz Araçları Karşılaştırması - Snyk Code vs DeepSource</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI Kod Analiz Araçları Karşılaştırması</h1>
+            <p class="subtitle">Snyk Code ve DeepSource tarama sonuçlarının karşılaştırması</p>
+        </header>
+
+        <main>
+            <div class="comparison-section">
+                <div class="tools-header">
+                    <div class="criterion-header"></div>
+                    <div class="tool-name snyk">
+                        <h2>Snyk Code</h2>
+                    </div>
+                    <div class="tool-name deepsource">
+                        <h2>DeepSource</h2>
+                    </div>
+                </div>
+
+                <div class="comparison-table">
+                    <!-- Total Issues -->
+                    <div class="comparison-row">
+                        <div class="criterion">
+                            <span class="criterion-label">Toplam Sorun Sayısı</span>
+                            <span class="criterion-desc">Tespit edilen toplam kod sorunu</span>
+                        </div>
+                        <div class="tool-value">
+                            <div class="issues-breakdown">
+                                <span class="issue-count critical">Critical: 0</span>
+                                <span class="issue-count high">High: 0</span>
+                                <span class="issue-count medium">Medium: 0</span>
+                                <span class="issue-count low">Low: 0</span>
+                                <span class="total-issues">Toplam: 0</span>
+                            </div>
+                        </div>
+                        <div class="tool-value">
+                            <div class="issues-breakdown">
+                                <span class="issue-count critical">Critical: 0</span>
+                                <span class="issue-count high">High: 1</span>
+                                <span class="issue-count medium">Medium: 1</span>
+                                <span class="issue-count low">Low: 0</span>
+                                <span class="total-issues">Toplam: 2</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Scan Duration -->
+                    <div class="comparison-row">
+                        <div class="criterion">
+                            <span class="criterion-label">Tarama Süresi</span>
+                            <span class="criterion-desc">Kod analizinin tamamlanma süresi (saniye)</span>
+                        </div>
+                        <div class="tool-value">
+                            <div class="metric-value">
+                                <span class="value-number">0.0s</span>
+                                <div class="progress-container small">
+                                    <div class="progress-bar" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tool-value">
+                            <div class="metric-value">
+                                <span class="value-number">5.2s</span>
+                                <div class="progress-container small">
+                                    <div class="progress-bar deepsource-bar" style="width: 52%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Code Coverage -->
+                    <div class="comparison-row">
+                        <div class="criterion">
+                            <span class="criterion-label">Kod Kapsamı</span>
+                            <span class="criterion-desc">Analiz edilen kod yüzdesi</span>
+                        </div>
+                        <div class="tool-value">
+                            <div class="progress-container">
+                                <div class="progress-bar" style="width: 0%">
+                                    <span class="progress-text">0%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tool-value">
+                            <div class="progress-container">
+                                <div class="progress-bar deepsource-bar" style="width: 0%">
+                                    <span class="progress-text">0%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Precision -->
+                    <div class="comparison-row">
+                        <div class="criterion">
+                            <span class="criterion-label">Precision (Kesinlik)</span>
+                            <span class="criterion-desc">Doğru pozitif / (Doğru pozitif + Yanlış pozitif)</span>
+                        </div>
+                        <div class="tool-value">
+                            <div class="progress-container">
+                                <div class="progress-bar" style="width: 0%">
+                                    <span class="progress-text">0.0</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tool-value">
+                            <div class="progress-container">
+                                <div class="progress-bar deepsource-bar" style="width: 0%">
+                                    <span class="progress-text">0.0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recall -->
+                    <div class="comparison-row">
+                        <div class="criterion">
+                            <span class="criterion-label">Recall (Duyarlılık)</span>
+                            <span class="criterion-desc">Doğru pozitif / (Doğru pozitif + Yanlış negatif)</span>
+                        </div>
+                        <div class="tool-value">
+                            <div class="progress-container">
+                                <div class="progress-bar" style="width: 0%">
+                                    <span class="progress-text">0.0</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tool-value">
+                            <div class="progress-container">
+                                <div class="progress-bar deepsource-bar" style="width: 0%">
+                                    <span class="progress-text">0.0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- F1 Score -->
+                    <div class="comparison-row">
+                        <div class="criterion">
+                            <span class="criterion-label">F1 Score</span>
+                            <span class="criterion-desc">Precision ve Recall'un harmonik ortalaması</span>
+                        </div>
+                        <div class="tool-value">
+                            <div class="progress-container">
+                                <div class="progress-bar" style="width: 0%">
+                                    <span class="progress-text">0.0</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tool-value">
+                            <div class="progress-container">
+                                <div class="progress-bar deepsource-bar" style="width: 0%">
+                                    <span class="progress-text">0.0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- False Positive Rate -->
+                    <div class="comparison-row">
+                        <div class="criterion">
+                            <span class="criterion-label">Yanlış Pozitif Oranı</span>
+                            <span class="criterion-desc">Yanlış pozitif / (Yanlış pozitif + Doğru negatif)</span>
+                        </div>
+                        <div class="tool-value">
+                            <div class="progress-container">
+                                <div class="progress-bar" style="width: 0%">
+                                    <span class="progress-text">0.0</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tool-value">
+                            <div class="progress-container">
+                                <div class="progress-bar deepsource-bar" style="width: 0%">
+                                    <span class="progress-text">0.0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Memory Usage -->
+                    <div class="comparison-row">
+                        <div class="criterion">
+                            <span class="criterion-label">Bellek Kullanımı</span>
+                            <span class="criterion-desc">Tarama sırasında kullanılan bellek (MB)</span>
+                        </div>
+                        <div class="tool-value">
+                            <div class="metric-value">
+                                <span class="value-number">40.0 MB</span>
+                                <div class="progress-container small">
+                                    <div class="progress-bar" style="width: 40%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tool-value">
+                            <div class="metric-value">
+                                <span class="value-number">40.1 MB</span>
+                                <div class="progress-container small">
+                                    <div class="progress-bar deepsource-bar" style="width: 40%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Summary Cards -->
+            <div class="summary-section">
+                <div class="summary-card snyk-card">
+                    <h3>Snyk Code</h3>
+                    <div class="summary-content">
+                        <p><strong>Proje:</strong> flask_demo</p>
+                        <p><strong>Tarama Durumu:</strong> Organizasyon desteği gerekli</p>
+                        <p><strong>Özellikler:</strong> Statik kod analizi, SARIF format desteği, güvenlik odaklı</p>
+                    </div>
+                </div>
+                <div class="summary-card deepsource-card">
+                    <h3>DeepSource</h3>
+                    <div class="summary-content">
+                        <p><strong>Proje:</strong> flask_demo</p>
+                        <p><strong>Tarama Durumu:</strong> Başarılı (2 sorun tespit edildi)</p>
+                        <p><strong>Özellikler:</strong> AI destekli kod analizi, GraphQL API, otomatik öneriler</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Info -->
+            <div class="info-section">
+                <h3>Metrik Açıklamaları</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <strong>Precision (Kesinlik):</strong> Tespit edilen sorunların ne kadarının gerçekten sorun olduğunu gösterir. Yüksek precision, daha az yanlış alarm demektir.
+                    </div>
+                    <div class="info-item">
+                        <strong>Recall (Duyarlılık):</strong> Gerçek sorunların ne kadarının tespit edildiğini gösterir. Yüksek recall, daha az kaçırılan sorun demektir.
+                    </div>
+                    <div class="info-item">
+                        <strong>F1 Score:</strong> Precision ve Recall'un dengeli bir ölçüsüdür. Her iki metrik için de optimal dengeyi gösterir.
+                    </div>
+                    <div class="info-item">
+                        <strong>False Positive Rate:</strong> Yanlış alarm oranı. Düşük değer, daha güvenilir sonuçlar anlamına gelir.
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>SmartTestAI - AI Kod Analiz Araçları Karşılaştırma Dashboard</p>
+        </footer>
+    </div>
+</body>
+</html>

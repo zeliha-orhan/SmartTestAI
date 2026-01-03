@@ -25,14 +25,57 @@ Kullanım:
 import json
 import subprocess
 import os
+import shutil
 from datetime import datetime
 from pathlib import Path
 from metrics.snyk_metrics import SnykMetrics
 from metrics.advanced_metrics import AdvancedMetricsCalculator
 
-# Snyk CLI yolu (Windows için)
-# Not: Bu yol sistemden sisteme değişebilir
-SNYK_PATH = r"C:\Users\gocer\AppData\Roaming\npm\snyk.cmd"
+def find_snyk_path() -> str:
+    """
+    Snyk CLI yolunu otomatik olarak bulur.
+    
+    Önce PATH'te arar, bulamazsa yaygın Windows konumlarını kontrol eder.
+    
+    Returns:
+        str: Snyk CLI'nin tam yolu
+        
+    Raises:
+        FileNotFoundError: Snyk CLI bulunamazsa
+    """
+    # Önce PATH'te ara
+    snyk_path = shutil.which("snyk")
+    if snyk_path and os.path.exists(snyk_path):
+        return snyk_path
+    
+    # Windows'ta yaygın npm global install konumları
+    appdata = os.getenv("APPDATA")
+    localappdata = os.getenv("LOCALAPPDATA")
+    
+    possible_paths = []
+    
+    if appdata:
+        possible_paths.append(os.path.join(appdata, "npm", "snyk.cmd"))
+    if localappdata:
+        possible_paths.append(os.path.join(localappdata, "npm", "snyk.cmd"))
+    
+    # Olası yolları kontrol et
+    for path in possible_paths:
+        if os.path.exists(path):
+            return path
+    
+    # Bulunamadıysa hata ver
+    raise FileNotFoundError(
+        "Snyk CLI bulunamadı. Lütfen Snyk'i yükleyin: npm install -g snyk"
+    )
+
+# Snyk CLI yolunu otomatik bul
+try:
+    SNYK_PATH = find_snyk_path()
+except FileNotFoundError as e:
+    # Eğer Snyk bulunamazsa, uygulama başlatıldığında hata verecek
+    SNYK_PATH = None
+    print(f"Uyarı: {e}")
 
 # Sonuç dosyalarının kaydedileceği klasör
 RESULTS_DIR = "../results"
@@ -150,7 +193,14 @@ def run_snyk_code_scan(target_path: str) -> dict:
     
     Raises:
         RuntimeError: Snyk CLI hatası veya tarama başarısız olduğunda
+        FileNotFoundError: Snyk CLI bulunamazsa
     """
+    # Snyk CLI yolu kontrolü
+    if SNYK_PATH is None:
+        raise FileNotFoundError(
+            "Snyk CLI bulunamadı. Lütfen Snyk'i yükleyin: npm install -g snyk"
+        )
+    
     # Snyk CLI komutunu çalıştır
     # --json flag'i ile JSON formatında çıktı al
     result = subprocess.run(
