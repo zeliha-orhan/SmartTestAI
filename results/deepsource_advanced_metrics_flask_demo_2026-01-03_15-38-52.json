@@ -1,7 +1,7 @@
 {
   "tool_name": "deepsource",
   "project": "flask_demo",
-  "timestamp": "2026-01-03_13-51-04",
+  "timestamp": "2026-01-03_15-38-52",
   "basic_metrics": {
     "tool_name": "DeepSource",
     "critical": 0,
@@ -29,8 +29,8 @@
     "false_positive_rate": 0.0,
     "operational_efficiency": {
       "average_scan_time": 0.0,
-      "cpu_usage_percent": 0.0,
-      "memory_usage_mb": 44.58984375
+      "cpu_usage_percent": 62.4,
+      "memory_usage_mb": 44.6328125
     },
     "code_quality_score": null
   },

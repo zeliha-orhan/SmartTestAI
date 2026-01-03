@@ -1,7 +1,7 @@
 {
-  "tool_name": "snyk",
-  "project": "snyk_code_flask_demo_2026-01-03_13-37-56",
-  "timestamp": "2026-01-03_13-39-24",
+  "tool_name": "snyk_code",
+  "project": "flask_demo",
+  "timestamp": "2026-01-03_15-38-37",
   "basic_metrics": {
     "tool_name": "Snyk Code",
     "critical": 0,
@@ -30,7 +30,7 @@
     "operational_efficiency": {
       "average_scan_time": 0.0,
       "cpu_usage_percent": 0.0,
-      "memory_usage_mb": 21.56640625
+      "memory_usage_mb": 44.56640625
     },
     "code_quality_score": null
   },

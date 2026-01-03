@@ -29,7 +29,6 @@ from datetime import datetime
 from pathlib import Path
 from metrics.snyk_metrics import SnykMetrics
 from metrics.advanced_metrics import AdvancedMetricsCalculator
-from ground_truth_loader import load_ground_truth
 
 # Snyk CLI yolu (Windows için)
 # Not: Bu yol sistemden sisteme değişebilir
@@ -238,15 +237,12 @@ def run_code_scan_and_save(project_name: str) -> dict:
         # Issue'ları çıkar (advanced metrics için)
         detected_issues = extract_issues_from_snyk_result(raw_output)
         
-        # Ground truth yükle (varsa)
-        ground_truth = load_ground_truth(project_name)
-        
         # Gelişmiş metrikleri hesapla
         calculator = AdvancedMetricsCalculator()
         advanced_result = calculator.calculate_all_advanced_metrics(
             raw_data=raw_output,
             detected_issues=detected_issues,
-            ground_truth=ground_truth,  # Ground truth yüklendi
+            ground_truth=None,  # Ground truth opsiyonel
             scan_duration=metric_result.scan_duration
         )
         
@@ -256,7 +252,7 @@ def run_code_scan_and_save(project_name: str) -> dict:
             project_name,
             metric_result,
             advanced_result,
-            ground_truth=ground_truth
+            ground_truth=None
         )
         
         # MetricResult'ı dict'e çevir

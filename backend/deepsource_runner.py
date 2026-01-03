@@ -40,7 +40,6 @@ from datetime import datetime
 from pathlib import Path
 from metrics.deepsource_metrics import DeepSourceMetrics
 from metrics.advanced_metrics import AdvancedMetricsCalculator
-from ground_truth_loader import load_ground_truth
 
 # Sonuç dosyalarının kaydedileceği klasör
 RESULTS_DIR = "../results"
@@ -398,15 +397,12 @@ def run_deepsource_scan_and_save(project_name: str) -> dict:
         # Issue'ları çıkar (advanced metrics için)
         detected_issues = extract_issues_from_deepsource_result(raw_output)
         
-        # Ground truth yükle (varsa)
-        ground_truth = load_ground_truth(project_name)
-        
         # Gelişmiş metrikleri hesapla
         calculator = AdvancedMetricsCalculator()
         advanced_result = calculator.calculate_all_advanced_metrics(
             raw_data=raw_output,
             detected_issues=detected_issues,
-            ground_truth=ground_truth,  # Ground truth yüklendi
+            ground_truth=None,  # Ground truth opsiyonel
             scan_duration=metric_result.scan_duration
         )
         
@@ -416,7 +412,7 @@ def run_deepsource_scan_and_save(project_name: str) -> dict:
             project_name,
             metric_result,
             advanced_result,
-            ground_truth=ground_truth
+            ground_truth=None
         )
         
         # MetricResult'ı dict'e çevir
