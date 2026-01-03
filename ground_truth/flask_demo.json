@@ -1,0 +1,10 @@
+[
+  {
+    "file": "app.py",
+    "line": 10,
+    "type": "SECURITY_WARNING",
+    "severity": "low",
+    "description": "Flask app running on 0.0.0.0 exposes to all network interfaces - should use 127.0.0.1 in development"
+  }
+]
+
